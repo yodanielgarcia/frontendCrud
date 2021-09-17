@@ -31,12 +31,8 @@
                   <p>Fecha de salida: {{ user.fechaSalida }}</p>
                 </b-card-text>
                 <div>
-                  <b-button
-                    pill
-                    v-if="favView"
-                    @click="deleteFav(teams.id)"
-                    variant="danger"
-                    >Delete</b-button
+                  <b-button variant="danger" @click="deletes(user.id)"
+                    >Button</b-button
                   >
                 </div>
               </b-card-body>
@@ -60,6 +56,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "UserCards",
   props: {
@@ -92,6 +89,17 @@ export default {
     },
   },
   methods: {
+    deletes(id) {
+      return axios
+        .delete("http://localhost:3000/users/api/v1/deletePerson/" + id)
+        .then((response) => {
+          window.location.reload();
+          return response.data;
+        })
+        .catch((e) => {
+          // Capturamos los errores
+        });
+    },
     paginate(page_size, page_number) {
       let itemsToParse = this.user;
       this.paginatedItems = itemsToParse.slice(

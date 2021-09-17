@@ -22,9 +22,7 @@
               <b-card-body :title="user.abbreviation">
                 <b-card-text>
                   Datos Del Usuario <br />
-                  <b-link @click="goTo(user.id)">
-                    Nombre: {{ user.nombre }}</b-link
-                  >
+                  <b-link> Nombre: {{ user.nombre }}</b-link>
                   <p>Apellido: {{ user.apellido }}</p>
                   <p>Direccion: {{ user.direccion }}</p>
                   <p>Telefono: {{ user.telefono }}</p>
@@ -94,12 +92,6 @@ export default {
     },
   },
   methods: {
-    goTo(id) {
-      this.$router.push({
-        name: "team",
-        params: { teamId: id },
-      });
-    },
     paginate(page_size, page_number) {
       let itemsToParse = this.user;
       this.paginatedItems = itemsToParse.slice(

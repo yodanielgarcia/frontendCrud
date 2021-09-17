@@ -32,7 +32,7 @@
                 </b-card-text>
                 <div>
                   <b-button variant="danger" @click="deletes(user.id)"
-                    >Button</b-button
+                    >Borrar</b-button
                   >
                 </div>
               </b-card-body>
